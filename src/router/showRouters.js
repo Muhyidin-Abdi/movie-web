@@ -25,12 +25,7 @@ router.get("/:id", async (req, res) => {
 //find all users that havbe watch a show 
 router.get("/:id/users", async (req, res) => {
     try {
-        const show = await Show.findByPk(req.params.id, {
-            include: {
-                model: User,
-                as: 'watchedByUsers'
-            }
-        });
+        const show = await Show.findByPk(req.params.id,)
         if (!show) return res.status(404).json({ error: 'Show not found' });
         res.json(show.watchedByUsers);
     } catch (err) {
